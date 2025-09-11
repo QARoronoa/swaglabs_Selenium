@@ -1,0 +1,54 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.log
+
+# Virtual env
+.venv/
+venv/
+env/
+ENV/
+*.env
+
+# ==========================
+# Pytest
+# ==========================
+.pytest_cache/
+.cache/
+.coverage
+*.coverage
+htmlcov/
+
+# ==========================
+# Allure
+# ==========================
+allure-results/
+allure-report/
+*.json
+*.xml
+
+# ==========================
+# IDE / OS
+# ==========================
+# VSCode
+.vscode/
+# PyCharm
+.idea/
+# Windows / Mac
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Selenium / Drivers
+# ==========================
+*.db
+chromedriver
+geckodriver
+msedgedriver

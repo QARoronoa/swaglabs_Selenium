@@ -13,10 +13,10 @@ def test_connexion_reussie(setup):
     home_page = HomePage(setup)
 
     with allure.step("Saisir standard_user dans le champ Username"):
-        login_page.remplir_le_champ_user()
+        login_page.remplir_le_champ_user("standard_user")
 
     with allure.step("saisir secret_sauce dans le champ Password"):
-        login_page.remplir_le_champ_pwd()
+        login_page.remplir_le_champ_pwd("secret_sauce")
 
     with allure.step("Cliquer sur le bouton Login"):
         login_page.cliquer_sur_login()

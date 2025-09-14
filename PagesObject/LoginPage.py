@@ -10,6 +10,7 @@ class LoginPage(BasePage):
     login_button = (By.ID, "login-button")
     message_erreur_connexion = (By.CSS_SELECTOR, "h3[data-test='error']")
 
+
     # méthodes
     def __init__(self, driver):
         super().__init__(driver)

@@ -3,10 +3,9 @@ import allure
 from PagesObject.LoginPage import LoginPage
 from PagesObject.HomePage import HomePage
 
-@allure.feature("Authentification")
-@allure.story("Connexion réussie avec utilisateur standard")
+@allure.feature("Gestion du Panier")
 
-def test_connexion_reussie(setup):
+def test_supression_panier(setup):
     login_page = LoginPage(setup)
     home_page = HomePage(setup)
 
@@ -21,4 +20,13 @@ def test_connexion_reussie(setup):
 
     with allure.step("L’utilisateur est redirigé vers la page des produits"):
         home_page.verifier_la_redirection_vers_homePage()
+
+    with allure.step("Cliquer sur Add to cart pour le produit Sauce Labs Backpack"):
+        home_page.cliquer_sur_add_to_cart_Sauce_Labs_Backpack()
+
+    with allure.step("l'article est ajouté au panier"):
+        home_page.verifier_la_quantite_affiche_sur_badge_panier("1")
+
+    with allure.step("l'article est supprimé au panier"):
+        home_page.cliquer_sur_le_bouton_remove()
 

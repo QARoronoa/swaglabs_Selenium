@@ -1,8 +1,7 @@
 import allure
-
 from PagesObject.LoginPage import LoginPage
 
-
+@allure.feature("Authentification")
 def test_connexion_echouee(setup):
     login_page = LoginPage(setup)
 

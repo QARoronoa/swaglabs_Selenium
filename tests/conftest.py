@@ -1,12 +1,12 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
-import pytest
 
 @pytest.fixture(scope="function")
 def setup():
-    opts = Options()
-    opts.add_argument("-headless")
-    driver = webdriver.Firefox(options=opts, service=Service())
+    options = Options()
+    options.add_argument("-headless")  # indispensable en CI
+    # NE PAS définir options.binary_location (laisse Selenium Manager trouver firefox)
+    driver = webdriver.Firefox(options=options)
     yield driver
     driver.quit()

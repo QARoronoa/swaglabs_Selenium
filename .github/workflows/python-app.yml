@@ -32,4 +32,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run pytest (Chrome headless, plugin selenium désactivé)
-        run: pytest -q --base-url=https://www.saucedemo.com/ -p no:selenium -rs
+        run: pytest -q --base-url=https://www.saucedemo.com/ -p no:selenium -rs -o sensitiveurl=

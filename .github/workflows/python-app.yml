@@ -18,13 +18,18 @@ jobs:
         with:
           python-version: "3.10"
 
-      # ✅ Installe Google Chrome (binaire réel)
+      # Installe Google Chrome
       - uses: browser-actions/setup-chrome@v1
 
       - name: Install Python deps
         run: |
           python -m pip install -U pip
+          # requirements minimal conseillé :
+          # selenium
+          # pytest
+          # pytest-base-url
+          # allure-pytest (si tu l'utilises)
           pip install -r requirements.txt
 
-      - name: Run pytest
-        run: pytest -q --base-url=https://www.saucedemo.com/
+      - name: Run pytest (Chrome headless, plugin selenium désactivé)
+        run: pytest -q --base-url=https://www.saucedemo.com/ -p no:selenium -rs

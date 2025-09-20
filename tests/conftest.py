@@ -1,18 +1,12 @@
-import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+import pytest
 
 @pytest.fixture(scope="function")
 def setup():
-    options=Options()
-    options.add_argument("-headless")
-
-    driver = webdriver.Firefox(options=options)
-    driver.maximize_window()
-    driver.get("https://www.saucedemo.com/v1/index.html")
-    driver.implicitly_wait(5)
-
-
+    opts = Options()
+    opts.add_argument("-headless")
+    driver = webdriver.Firefox(options=opts, service=Service())
     yield driver
     driver.quit()

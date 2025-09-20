@@ -6,6 +6,7 @@ from selenium.webdriver.firefox.options import Options
 @pytest.fixture(scope="function")
 def setup():
     options=Options()
+    options.add_argument("-headless")
 
     driver = webdriver.Firefox(options=options)
     driver.maximize_window()

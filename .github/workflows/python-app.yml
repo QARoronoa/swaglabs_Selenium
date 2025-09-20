@@ -27,4 +27,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run pytest
-        run: pytest -q
+        run: pytest -q --base-url=https://www.saucedemo.com/

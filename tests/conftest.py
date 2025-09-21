@@ -1,16 +1,23 @@
-# tests/conftest.py
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
+from data.Checkout_Data import checkout_data
 
 @pytest.fixture(scope="function")
-def setup(base_url):
-    opts = Options()
-    opts.add_argument("--headless=new")
-    opts.add_argument("--no-sandbox")
-    opts.add_argument("--disable-dev-shm-usage")
+def setup():
+    options=Options()
 
-    driver = webdriver.Chrome(options=opts)
-    driver.get(base_url or "https://www.saucedemo.com/")
+
+    driver = webdriver.Firefox(options=options)
+    driver.maximize_window()
+    driver.get("https://www.saucedemo.com/v1/index.html")
+    driver.implicitly_wait(5)
+
+
     yield driver
     driver.quit()
+
+@pytest.fixture
+def formulaire_info():
+    return checkout_data.formulaire()

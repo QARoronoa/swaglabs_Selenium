@@ -13,6 +13,7 @@ class HomePage(BasePage):
     bouton_add_to_cart_article_1 = (By.XPATH, "(//button[text()='ADD TO CART'])[1]")
     cart_badge = (By.CSS_SELECTOR, ".fa-layers-counter")
     remove_button = (By.XPATH, "//button[text()='REMOVE']")
+    bouton_panier = (By.CSS_SELECTOR, ".shopping_cart_link")
 
     #methodes
     def __init__(self, driver):
@@ -32,5 +33,7 @@ class HomePage(BasePage):
 
     def cliquer_sur_le_bouton_remove(self):
         self.cliquer_sur_element(self.remove_button)
-        badge_cart = (WebDriverWait(self.driver, 10).until
-                      (EC.invisibility_of_element_located(self.cart_badge)))
+        badge_cart = (WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(self.cart_badge)))
+
+    def cliquer_sur_le_panier(self):
+        self.cliquer_sur_element(self.bouton_panier)

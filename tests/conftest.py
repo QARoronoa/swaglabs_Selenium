@@ -8,7 +8,7 @@ from data.Checkout_Data import checkout_data
 def setup():
     options=Options()
 
-
+    options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
     driver.maximize_window()
     driver.get("https://www.saucedemo.com/v1/index.html")

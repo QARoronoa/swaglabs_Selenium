@@ -20,3 +20,4 @@ class BasePage():
     def verifier_le_texte_dun_champ(self, locator):
         element = WebDriverWait (self.driver, 20).until(EC.visibility_of_element_located(locator))
         return element.text
+

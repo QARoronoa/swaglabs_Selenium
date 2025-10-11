@@ -17,6 +17,7 @@ class CheckoutInformationPage(BasePage):
         article_nom = (By.CSS_SELECTOR, ".inventory_item_name")
         finish_bouton = (By.CSS_SELECTOR, ".cart_button")
         thank_you_order_text = (By.CSS_SELECTOR, ".complete-header")
+        error_message = (By.CSS_SELECTOR, "h3[data-test='error']")
 
     # méthodes
         def __init__(self, driver):
@@ -44,4 +45,7 @@ class CheckoutInformationPage(BasePage):
         def verifier_message_order_success(self):
             titre_success_order = self.verifier_le_texte_dun_champ(self.thank_you_order_text)
             assert "THANK YOU" in titre_success_order
+
+        def verifier_la_presence_du_message_derreur(self):
+            self.verifier_le_texte_dun_champ(self.error_message)
 

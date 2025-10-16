@@ -17,6 +17,8 @@ class HomePage(BasePage):
     bouton_panier = (By.CSS_SELECTOR, ".shopping_cart_link")
     bouton_burger=(By.CSS_SELECTOR, ".bm-burger-button")
     bouton_logout = (By.ID, "logout_sidebar_link")
+    titre_item_labs_backPack = (By.XPATH, "//div[text()='Sauce Labs Backpack']")
+    image_sauce_labs_backpack = (By.XPATH, "(//div[@class='inventory_item_img'])[1]")
 
     #methodes
     def __init__(self, driver):
@@ -54,3 +56,9 @@ class HomePage(BasePage):
         articles = WebDriverWait(self.driver, 20).until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR,".inventory_item")))
         nombre_articles = len(articles)
         assert nombre_articles == 6
+
+    def cliquer_sur_sauce_labs_backpack(self):
+        self.cliquer_sur_element(self.titre_item_labs_backPack)
+
+    def cliquer_sur_image_sauce_labs_backpack(self):
+        self.cliquer_sur_element(self.image_sauce_labs_backpack)

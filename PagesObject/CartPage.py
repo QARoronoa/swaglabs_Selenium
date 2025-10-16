@@ -15,6 +15,7 @@ class CartPAge(BasePage):
 
 
 
+
     # méthodes
         def __init__(self, driver):
             super().__init__(driver)
@@ -28,3 +29,6 @@ class CartPAge(BasePage):
 
         def verifier_que_le_panier_est_vide(self):
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(self.cart_quantity))
+
+        def verifier_la_redirection_vers_fiche_produit(self):
+            self.verifier_le_texte_dun_champ(self.)

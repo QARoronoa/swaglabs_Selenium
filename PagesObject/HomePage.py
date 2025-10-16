@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
 from PagesObject.BasePage import BasePage
@@ -62,3 +63,21 @@ class HomePage(BasePage):
 
     def cliquer_sur_image_sauce_labs_backpack(self):
         self.cliquer_sur_element(self.image_sauce_labs_backpack)
+
+    def effectuer_un_tri(self, choix_tri):
+        dropdown = Select(self.driver.find_element(By.CSS_SELECTOR, ".product_sort_container"))
+        dropdown.select_by_value(choix_tri)
+
+    def verifier_le_tri_Z_to_A(self):
+        articles = self.driver.find_elements(By.CSS_SELECTOR, ".inventory_item_name")
+        assert articles[0].text == "Test.allTheThings() T-Shirt (Red)"
+        assert articles[5].text == "Sauce Labs Backpack"
+
+    def verifier_le_tri_a_to_z(self):
+        articles = self.driver.find_elements(By.CSS_SELECTOR, ".inventory_item_name")
+        assert articles[0].text == "Sauce Labs Backpack"
+        assert articles[5].text == "Test.allTheThings() T-Shirt (Red)"
+
+
+
+

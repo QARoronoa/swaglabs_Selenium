@@ -3,7 +3,7 @@ from PagesObject.HomePage import HomePage
 from PagesObject.LoginPage import LoginPage
 
 @allure.feature('Page d\'accueil')
-def test_verifier_tri(setup):
+def test_verifier_tri_prix(setup):
     login_page=LoginPage(setup)
     home_page=HomePage(setup)
 
@@ -13,11 +13,10 @@ def test_verifier_tri(setup):
         login_page.cliquer_sur_login()
         home_page.verifier_la_redirection_vers_homePage()
 
-    with allure.step("Tri de Z to A"):
-        home_page.effectuer_un_tri("za")
-        home_page.verifier_le_tri_Z_to_A()
+    with allure.step("Tri price low to high"):
+        home_page.effectuer_un_tri("lohi")
+        home_page.verifier_tri_price_premier_article("$7.99")
 
-    with allure.step("Tri de Z to A"):
-        home_page.effectuer_un_tri("az")
-        home_page.verifier_le_tri_a_to_z()
-
+    with allure.step("Tri price hih to low"):
+        home_page.effectuer_un_tri("hilo")
+        home_page.verifier_tri_price_premier_article("$49.99")

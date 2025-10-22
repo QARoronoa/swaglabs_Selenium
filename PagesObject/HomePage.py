@@ -20,6 +20,7 @@ class HomePage(BasePage):
     bouton_logout = (By.ID, "logout_sidebar_link")
     titre_item_labs_backPack = (By.XPATH, "//div[text()='Sauce Labs Backpack']")
     image_sauce_labs_backpack = (By.XPATH, "(//div[@class='inventory_item_img'])[1]")
+    prix_premier_article = (By.XPATH, "(//div[@class='inventory_item_price'])[1]")
 
     #methodes
     def __init__(self, driver):
@@ -77,6 +78,10 @@ class HomePage(BasePage):
         articles = self.driver.find_elements(By.CSS_SELECTOR, ".inventory_item_name")
         assert articles[0].text == "Sauce Labs Backpack"
         assert articles[5].text == "Test.allTheThings() T-Shirt (Red)"
+
+    def verifier_tri_price_premier_article(self, price):
+        prix_1 = self.driver.find_element(By.XPATH,  "(//div[@class='inventory_item_price'])[1]").text
+        assert prix_1 == price
 
 
 

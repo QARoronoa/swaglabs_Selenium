@@ -1,5 +1,4 @@
 import time
-
 import allure
 from PagesObject.HomePage import HomePage
 from PagesObject.LoginPage import LoginPage

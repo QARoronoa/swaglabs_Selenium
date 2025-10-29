@@ -21,6 +21,7 @@ class HomePage(BasePage):
     titre_item_labs_backPack = (By.XPATH, "//div[text()='Sauce Labs Backpack']")
     image_sauce_labs_backpack = (By.XPATH, "(//div[@class='inventory_item_img'])[1]")
     prix_premier_article = (By.XPATH, "(//div[@class='inventory_item_price'])[1]")
+    boutons_remove = (By.XPATH, "//button[text()='REMOVE']")
 
     #methodes
     def __init__(self, driver):
@@ -83,6 +84,13 @@ class HomePage(BasePage):
         prix_1 = self.driver.find_element(By.XPATH,  "(//div[@class='inventory_item_price'])[1]").text
         assert prix_1 == price
 
+    def cliquer_sur_les_boutons_add_to_cart(self):
+        boutons_add_to_cart = self.driver.find_elements(By.XPATH,"//button[text()='ADD TO CART']")
+        for e in boutons_add_to_cart:
+            e.click()
 
-
+    def verifier_les_boutons_remove_sont_visibles(self):
+        bouton = WebDriverWait(self.driver, 20).until(EC.visibility_of_all_elements_located(self.remove_button))
+        bouton_quantity = len(bouton)
+        assert bouton_quantity == 6, f"La quantité visibles est '{bouton_quantity}'"
 
